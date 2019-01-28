@@ -5,6 +5,7 @@ requets模块的简单的封装
 import requests,json
 from config.config_set import Interface_Time_Out
 from requests import exceptions
+from common.log import Log
 class Reques():
 
     def get(self,url,params,headers): #get消息
@@ -18,34 +19,41 @@ class Reques():
             spend = self.r.elapsed.total_seconds()
             return json_response,spend
         except exceptions.Timeout:
+            Log().error('get请求出错: 请求超时')
             return {'get请求出错': "请求超时"}
         except exceptions.InvalidURL:
+            Log().error('get请求出错: 非法url')
             return {'get请求出错': "非法url"}
         except exceptions.HTTPError:
+            Log().error('get请求出错: http请求错误')
             return {'get请求出错': "http请求错误"}
         except Exception as e:
+            Log().error('get请求出错: 错误原因:%s' % e)
             return {'get请求出错':"错误原因:%s" % e}
 
     def post(self,url, params,headers):#post消息
-        # data = json.dumps(params)
-        # print(type(data))
         try:
             if headers != None:
-                self.r = requests.post(url=url,params=params, headers=headers, verify=False,timeout=Interface_Time_Out)
+                self.r = requests.post(url=url,data=params, headers=headers, verify=False,timeout=Interface_Time_Out)
             else:
-                self.r = requests.post(url=url,params=params, verify=False,timeout=Interface_Time_Out)
+                self.r = requests.post(url=url,data=params, verify=False,timeout=Interface_Time_Out)
             print(self.r.status_code)
-            json_response =self.r.text.encode('utf-8').decode("unicode_escape")
+            # json_response =self.r.text.encode('utf-8').decode("unicode_escape")
+            json_response = self.r.text
             spend = self.r.elapsed.total_seconds()
             return json_response,spend
-        except exceptions.Timeout :
-            return {'post请求出错': "请求超时"}
+        except exceptions.Timeout:
+            Log().error('get请求出错: 请求超时')
+            return {'get请求出错': "请求超时"}
         except exceptions.InvalidURL:
-            return {'post请求出错': "非法url"}
+            Log().error('get请求出错: 非法url')
+            return {'get请求出错': "非法url"}
         except exceptions.HTTPError:
-            return {'post请求出错': "http请求错误"}
+            Log().error('get请求出错: http请求错误')
+            return {'get请求出错': "http请求错误"}
         except Exception as e:
-            return {'post请求出错':"错误原因:%s" % e}
+            Log().error('get请求出错: 错误原因:%s' % e)
+            return {'get请求出错': "错误原因:%s" % e}
 
     def delfile(self,url,params,headers):#删除的请求
         try:
@@ -53,14 +61,18 @@ class Reques():
             json_response=self.rdel_word.text.encode("utf-8").decode("unicode_escape")
             spend=self.rdel_word.elapsed.total_seconds()
             return json_response,spend
-        except exceptions.Timeout :
-            return {'delete请求出错': "请求超时"}
+        except exceptions.Timeout:
+            Log().error('get请求出错: 请求超时')
+            return {'get请求出错': "请求超时"}
         except exceptions.InvalidURL:
-            return {'delete请求出错': "非法url"}
+            Log().error('get请求出错: 非法url')
+            return {'get请求出错': "非法url"}
         except exceptions.HTTPError:
-            return {'delete请求出错': "http请求错误"}
+            Log().error('get请求出错: http请求错误')
+            return {'get请求出错': "http请求错误"}
         except Exception as e:
-            return {'delete请求出错': "错误原因:%s" % e}
+            Log().error('get请求出错: 错误原因:%s' % e)
+            return {'get请求出错': "错误原因:%s" % e}
 
     def putfile(self,url,params,headers):#put请求
         try:
@@ -69,19 +81,23 @@ class Reques():
             json_response=json.loads(me.text)
             spend=me.elapsed.total_seconds()
             return json_response,spend
-        except exceptions.Timeout :
-            return {'put请求出错': "请求超时"}
+        except exceptions.Timeout:
+            Log().error('get请求出错: 请求超时')
+            return {'get请求出错': "请求超时"}
         except exceptions.InvalidURL:
-            return {'put请求出错': "非法url"}
+            Log().error('get请求出错: 非法url')
+            return {'get请求出错': "非法url"}
         except exceptions.HTTPError:
-            return {'put请求出错': "http请求错误"}
+            Log().error('get请求出错: http请求错误')
+            return {'get请求出错': "http请求错误"}
         except Exception as e:
-            return {'put请求出错': "错误原因:%s" % e}
+            Log().error('get请求出错: 错误原因:%s' % e)
+            return {'get请求出错': "错误原因:%s" % e}
 
 if __name__=="__main__":
-    url = r'http://m.imooc.com/passport/user/login'
-    # data = "username=13316588360&password=sly1992.&verify=$referer=https://m.imooc.com"
-    data={"username":"13316588360","password":"sly1992.","verify":"","referer":"https://m.imooc.com"}
+    url = r'http://m.imooc.com/'
+
+    data={""}
 
     headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0",

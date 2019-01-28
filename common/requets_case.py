@@ -4,6 +4,7 @@
 目前只支持dict格式的参数，和请求headers。
 '''
 from common.requets_fenzhuang import Reques
+import json
 
 class Api():
    def __init__(self,url,methond,params,headers):
@@ -32,14 +33,18 @@ class Api():
         return spend
 
 if __name__=="__main__":
-    url=r'http://m.imooc.com/passport/user/login'
+    url=r'http://120.79.232.23:8000/api/user/login'
     # data={"username":"13316588360","password":"sly1992.","verify":"","referer":"https://m.imooc.com"}
-    data="username=13316588360&password=sly1992.&verify=&referer=https://m.imooc.com"
-    headers={"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "Connection": "close"}
+    data={'username':'admin','password':'admin369874125'}
+
+    data=json.dumps(data)
+
+    # headers=json.loads(headers)
+    headers={"Content-Type":"application/json;charset=UTF-8"}
     r=Api(url,'post',data,headers)
     w=r.getJson()
     t=r.spend()
-    print(data)
-    print("type%s" % type(w))
+    print(headers)
+    print("type%s" % type(headers))
     print(w)
     print(t)

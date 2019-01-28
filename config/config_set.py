@@ -9,12 +9,12 @@ report_path="F:\\python_Jiekou\\Auto\\report\\"+"%s_report.html"%time.strftime('
 reportexcel_path="F:\\python_Jiekou\\Auto\\report\\"+"%s_result.xls"%time.strftime('%Y_%m_%d')
 
 #excel测试报告设置
-projectname = '图灵'            #项目名称
+projectname = '接口'            #项目名称
 interfaceVersion = '1.0.1'      #接口版本
-tijiao_time = '2017 - 3 - 12'   #提测时间
-ceshi_person = 'leizi，beijing' #测试人
-ceshi_time = '2017 - 4 - 13'    #测试时间
-shenhename = '雷子'             #审核人
+tijiao_time = '2018 - 3 - 12'   #提测时间
+ceshi_person = 'leg' #测试人
+ceshi_time = '2018 - 4 - 13'    #测试时间
+shenhename = 'hh'             #审核人
 
 # Excel数据路径
 Excel_path="F:\\python_Jiekou\\Auto\\data\\casedata.xls"

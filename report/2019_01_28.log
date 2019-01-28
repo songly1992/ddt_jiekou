@@ -1,0 +1,11 @@
+[2019-01-28 13:57:51,769] - [line:26] __console - INFO: 解析测试用例文件
+[2019-01-28 13:57:51,773] - [line:26] __console - INFO: 生成数据驱动所用数据
+[2019-01-28 13:57:51,866] - [line:26] __console - INFO: ------------测试用例开始执行-------------
+[2019-01-28 13:57:51,868] - [line:26] __console - INFO: 请求传入数据：url:http://coding.imooc.com/class/ajaxsearchwords,请求方式:get,参数:{"callback":"searchKeys","_":"1547087518961"},期望结果："result":0
+[2019-01-28 13:57:52,148] - [line:26] __console - INFO: ------用例测试通过,实际结果：searchKeys({"result":0,"data":[{"name":"Java入门","links":"\/\/class.imooc.com\/sc\/18"},{"name":"前端入门","links":"\/\/class.imooc.com\/sc\/20"}],"msg":"成功"}),响应时间：0.089453
+[2019-01-28 13:57:52,152] - [line:26] __console - INFO: ------------测试用例执行完毕-------------
+[2019-01-28 13:57:52,156] - [line:26] __console - INFO: ------------测试用例开始执行-------------
+[2019-01-28 13:57:52,160] - [line:26] __console - INFO: 请求传入数据：url:http://120.79.232.23:8000/api/user/login,请求方式:post,参数:{"username":"admin","password":"admin369874125"},期望结果："code":"999999","msg":"成功"
+[2019-01-28 13:57:52,448] - [line:26] __console - INFO: ------用例测试通过,实际结果：{"code":"999999","msg":"成功","data":{"first_name":"admin","last_name":"","phone":"12345678911","email":"admin@163.com","key":"640ca3dbb875b6cfe898bf0c9b0f45a921ef169b","date_joined":"2018-06-28 02:56:00","userphoto":"/file/userphoto.jpg"}},响应时间：0.13012
+[2019-01-28 13:57:52,451] - [line:26] __console - INFO: ------------测试用例执行完毕-------------
+[2019-01-28 13:57:52,453] - [line:26] __console - INFO: 所有用例执行完成，成功数:2,失败数：0

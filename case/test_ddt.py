@@ -1,8 +1,9 @@
 # encoding=utf-8
 
+
 import unittest
 import ddt
-
+import json
 from common.requets_case import Api
 from common.get_excel import makedata
 from common.log import Log
@@ -10,7 +11,8 @@ from common.send_email import SendEmail
 from common.assertion import Assertion
 from common.pyreport_excel import create
 from config.config_set import Config_Try_Num
-from common.data_deal import datatype_deal
+from common.data_deal import datatype_deal,header_deal
+
 
 
 data_test = makedata()
@@ -44,7 +46,8 @@ class MyTest(unittest.TestCase):
         is_run=data_test['run']
         if is_run=='yes'or is_run=='YES':
             data=datatype_deal(data_test['data_type'],data_test['data'])#转换为字典类型
-            testapi= Api(data_test['url'],data_test['methond'],data,data_test['header'])
+            header=header_deal(data_test['header']) #转换为字典类型
+            testapi= Api(data_test['url'],data_test['methond'],data,header)
             Log().info('请求传入数据：url:%s,请求方式:%s,参数:%s,期望结果：%s' % (data_test['url'], data_test['methond'],data_test['data'], data_test['expect']))
             apijson =testapi.getJson()
             spend = testapi.spend()
@@ -61,7 +64,6 @@ class MyTest(unittest.TestCase):
                 # 统计通过的用例数
                 list_pass.append('pass')
                 listresult.append('pass')
-
             else:
                 error_num=0
                 for i in range(0,Config_Try_Num+10):
@@ -88,6 +90,9 @@ class MyTest(unittest.TestCase):
                         break
             list_json.append(apijson)
             listspends.append(spend)
+
+
+
             Log().info('------------测试用例执行完毕-------------')
             print('------------测试用例执行完毕-------------')
 
